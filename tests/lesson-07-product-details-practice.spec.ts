@@ -25,16 +25,16 @@ test('Men Tshirt product details are displayed correctly', async ({ page }) => {
   await expect(page).toHaveURL(/\/products$/);
 
   // Открываем второй товар
-  const firstViewProductLink = page
+  const secondViewProductLink = page
     .getByRole('link', {
       name: /view product/i,
     })
     .nth(1);
 
-  await expect(firstViewProductLink).toBeVisible();
-  await firstViewProductLink.click();
+  await expect(secondViewProductLink).toBeVisible();
+  await secondViewProductLink.click();
 
-  // Проверяем переход в карточку первого товара
+  // Проверяем переход в карточку второго товара
   await expect(page).toHaveURL(/\/product_details\/2$/);
 
   // Ограничиваем проверки контейнером информации о товаре
