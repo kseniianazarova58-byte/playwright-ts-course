@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('Automation Exercise Products search successfully', async ({ page }) => {
+test('Automation Exercise searches for Men Tshirt', async ({ page }) => {
   await page.goto('https://www.automationexercise.com/');
   // Закрываем окно cookie, если оно появилось
   const consentButton = page
@@ -36,10 +36,10 @@ await expect(featuresHeading).toBeVisible();
 await expect(searchProductInput).toBeVisible();
 
 // Вводим название товара
-await searchProductInput.fill('Blue Top');
+await searchProductInput.fill('Men Tshirt');
 
 // Проверяем, что значение действительно введено
-await expect(searchProductInput).toHaveValue('Blue Top');
+await expect(searchProductInput).toHaveValue('Men Tshirt');
 
 const searchButton = page.locator('#submit_search');
 await searchButton.click();
@@ -49,7 +49,7 @@ const searchedProductsHeading = page.getByRole('heading', {
 });
 
 const blueTopProduct = page
-  .getByText('Blue Top', {
+  .getByText('Men Tshirt', {
     exact: true,
   })
   .first();
