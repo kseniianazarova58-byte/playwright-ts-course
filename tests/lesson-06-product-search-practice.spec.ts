@@ -22,14 +22,12 @@ test('Automation Exercise searches for Men Tshirt', async ({ page }) => {
   await expect(productsLink).toBeVisible();
 
   await productsLink.click();
+  await expect(page).toHaveURL(/\/products$/);
 
   const featuresHeading = page.getByRole('heading', {
     name: /ALL PRODUCTS/i,
   });
-  
-  page.getByRole('heading', {
-  name: /searched products/i,
-});
+
 const searchProductInput = page.getByPlaceholder('Search Product');
 
 await expect(featuresHeading).toBeVisible();
@@ -48,7 +46,7 @@ const searchedProductsHeading = page.getByRole('heading', {
   name: /searched products/i,
 });
 
-const blueTopProduct = page
+const MenTshirtProduct = page
   .getByText('Men Tshirt', {
     exact: true,
   })
@@ -56,6 +54,6 @@ const blueTopProduct = page
 
 // Проверяем результат поиска
 await expect(searchedProductsHeading).toBeVisible();
-await expect(blueTopProduct).toBeVisible();
+await expect(MenTshirtProduct).toBeVisible();
 
 });
